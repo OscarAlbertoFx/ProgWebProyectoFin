@@ -39,6 +39,9 @@ public class PeliculaBean {
     private List<Pelicula> valores;
 
     public PeliculaBean() {
+        peliculaFacade = new PeliculaFacade();
+        this.valores= peliculaFacade.filtrar();
+        System.out.println(getValores());
     }
 
     public int getIdPelicula() {
