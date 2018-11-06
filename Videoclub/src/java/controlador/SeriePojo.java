@@ -11,6 +11,15 @@ public class SeriePojo {
     private double precio;
     private double rating;
     private int numero_temporadas;
+    private String categoria_nombre;
+
+    public String getCategoria_nombre() {
+        return categoria_nombre;
+    }
+
+    public void setCategoria_nombre(String categoria_nombre) {
+        this.categoria_nombre = categoria_nombre;
+    }
     
     public SeriePojo() {
         

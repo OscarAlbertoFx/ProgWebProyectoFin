@@ -100,21 +100,54 @@ public class SerieBean {
         this.categoria_nombre = categoria_nombre;
     }
 
-    public String buscar(int id) {
-        setIdSerie(id);
-        serieFacade = new SerieFacade();
-        seriePojo = serieFacade.buscarSerie(idSerie);
-        setIdSerie(seriePojo.getIdSerie());
-        setNumero_temporadas(seriePojo.getNumero_temporadas());
-        setPrecio(seriePojo.getPrecio());
-        setRating(seriePojo.getRating());
-        setSinopsis(seriePojo.getSinopsis());
-        setTitulo(seriePojo.getTitulo());
-        setIdCategoria(seriePojo.getIdCategoria());
-        setCategoria_nombre(seriePojo.getIdCategoria().getNombreCategoria());
-        return "descripcion_serie";
+    public void buscar() {
+        
+       SeriePojo serieP= SerieFacade.buscarSerie(idSerie);
+       if(serieP!=null){
+           setTitulo(serieP.getTitulo());
+           setSinopsis(serieP.getSinopsis());
+           setRating(serieP.getRating());
+           setPrecio(serieP.getPrecio());
+           setNumero_temporadas(serieP.getNumero_temporadas());
+           setCategoria_nombre(serieP.getCategoria_nombre());
+           
+       
+       }
+       else{
+           System.out.println("No se ha hallado");}
+  
     }
+  
+  
+public void actualizar(){
+if (titulo.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir el titiulo"));
+        } else if (sinopsis.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir la sinopsis"));
+        } else if (categoria_nombre.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir el nobre de la categria"));
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            Serie serie = new Serie();
+            serie.setTitulo(titulo);
+            serie.setIdSerie(idSerie);
+            serie.setSinopsis(sinopsis);
+            serie.setPrecio(precio);
+            serie.setRating(rating);
+            serie.setNumeroTemporadas(numero_temporadas);
+            SerieFacade.actualizar(serie);
+            System.out.println("yeahhhhhhhhhhhhhhhhhhhhhh");
+            context.addMessage("", new FacesMessage("Se registro correctamente"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Registro Existoso", "Advertencia"));
+            try {
+                FacesContext contex = FacesContext.getCurrentInstance();
+                contex.getExternalContext().redirect("/Videoclub/faces/view/CrearSerie.xhtml");
+            } catch (Exception e) {
+                System.out.println("Me voy al carajo, no funciona esta redireccion");
+            }
+        }
 
+}
     public void alta() {
 
         if (titulo.equals("")) {

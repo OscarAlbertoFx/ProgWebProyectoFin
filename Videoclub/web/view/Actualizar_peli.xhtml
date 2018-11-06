@@ -52,12 +52,20 @@
                     <p:graphicImage library="img" name="ser.png" style="width: 180px;"/>
                 </h:panelGrid>
 </h:form>
+                
+                
+                 <div class="ui-inputgroup">
+            <h:panelGrid columns="3" cellpadding="10">
+                <p:inputText placeholder="Buscar" value="#{serieBean.buscar(id)}" />
+            <p:commandButton icon="ui-icon-search"   />
+            </h:panelGrid>
+        </div>
      <h:form>
    
  
    <p:dataTable id="Actualizar" var="Act_S"  editable="true" style="margin-bottom:20px">
        <f:facet name="header">
-        Actualizar Series
+        Actualizar pelicula
        </f:facet>
  
        <p:ajax event="rowEdit"  />

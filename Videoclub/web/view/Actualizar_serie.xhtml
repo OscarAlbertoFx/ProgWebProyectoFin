@@ -52,10 +52,16 @@
                     <p:graphicImage library="img" name="ser.png" style="width: 180px;"/>
                 </h:panelGrid>
 </h:form>
-     <h:form>
+                 <div class="ui-inputgroup">
+            <h:panelGrid columns="3" cellpadding="10">
+                <p:inputText placeholder="Buscar" value="#{serieBean.idSerie}"/>
+                <p:commandButton icon="ui-icon-search" action="#{serieBean.buscar()}" ajax="true" update=":tabla:Actualizar_tb"/>
+            </h:panelGrid>
+        </div>
+     <h:form id="tabla">
    
- 
-   <p:dataTable id="Actualizar" var="Act_S"  editable="true" style="margin-bottom:20px">
+         
+   <p:dataTable id="Actualizar_tb" var="Act_S"  editable="true" style="margin-bottom:20px">
        <f:facet name="header">
         Actualizar Series
        </f:facet>
@@ -65,51 +71,43 @@
  
        <p:column headerText="Nombre">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input"></f:facet>
+               <f:facet name="output"><h:outputText value="#{serieBean.titulo}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{serieBean.titulo}" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
        <p:column headerText="Sinopsis">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input"></f:facet>
+               <f:facet name="output"><h:outputText value="#{serieBean.sinopsis}" /></f:facet>
+               <f:facet name="input"><p:inputText  value="#{serieBean.sinopsis}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+        <p:column headerText="Rating">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{serieBean.rating}" /></f:facet>
+               <f:facet name="input"><p:inputText  value="#{serieBean.rating}" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
-       <p:column headerText="Clasificacion">
+       <p:column headerText="Categoria">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input">
+               <f:facet name="output"><h:outputText value="#{serieBean.categoria_nombre}" /></f:facet>
+               <f:facet name="input"><p:inputText  value="#{serieBean.categoria_nombre}" style="width:100%"/>
                 </f:facet>
            </p:cellEditor>
        </p:column>
  
-       <p:column headerText="Director">
+       <p:column headerText="No de temporadas">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input">
-               </f:facet>
-           </p:cellEditor>
-       </p:column>
-       <p:column headerText="Categoria">
-           <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input">
-               </f:facet>
-           </p:cellEditor>
-       </p:column>
- <p:column headerText="No de temporadas">
-           <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input">
+               <f:facet name="output"><h:outputText value="#{serieBean.numero_temporadas}" /></f:facet>
+               <f:facet name="input"><p:inputText  value="#{serieBean.numero_temporadas}" style="width:100%"/>
                </f:facet>
            </p:cellEditor>
        </p:column>
        <p:column headerText="Precio">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="" /></f:facet>
-               <f:facet name="input">
+               <f:facet name="output"><h:outputText value="#{serieBean.precio}" /></f:facet>
+               <f:facet name="input"><p:inputText  value="#{serieBean.precio}" style="width:100%"/>
                </f:facet>
            </p:cellEditor>
        </p:column>
@@ -117,7 +115,7 @@
            <p:rowEditor />
        </p:column>
    </p:dataTable>       
-                
+      
      </h:form>
                    
             </ui:define>

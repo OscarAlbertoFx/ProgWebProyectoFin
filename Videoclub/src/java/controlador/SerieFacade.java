@@ -32,10 +32,7 @@ public class SerieFacade {
     public SeriePojo buscarSerie(int id) {
         SeriePojo seriePojo = new SeriePojo();
         boolean valido = false;
-        Serie serie = new Serie();
-
-        serie = serieJpa.findSerie(id);
-
+        Serie serie =serieJpa.findSerie(id);
         System.out.println("Serie hallada " + serie);
         seriePojo.setIdCategoria(serie.getIdCategoria());
         seriePojo.setIdSerie(serie.getIdSerie());
@@ -55,6 +52,18 @@ public class SerieFacade {
         } catch (Exception ex) {
             Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void actualizar( Serie serie){
+    try {
+            serieJpa.edit(serie);
+        } catch (RollbackFailureException ex) {
+            Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
     }
 
 }

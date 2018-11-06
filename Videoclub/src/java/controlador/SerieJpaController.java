@@ -135,11 +135,12 @@ public class SerieJpaController implements Serializable {
     public Serie findSerie(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Serie.class, id);
+            return em.find(Serie.class,id);
         } finally {
             em.close();
         }
     }
+
 
     public int getSerieCount() {
         EntityManager em = getEntityManager();
