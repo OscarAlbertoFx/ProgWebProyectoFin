@@ -12,4 +12,5 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/videoclubu" object-type="user" pool-name="mysql_videoclub_rootPool"/>
     <jdbc-resource enabled="true" jndi-name="java:app/videoclubbb" object-type="user" pool-name="mysql_videoclub_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/videoclub" object-type="user" pool-name="mysql_videoclub_rootPool"/>
 </resources>

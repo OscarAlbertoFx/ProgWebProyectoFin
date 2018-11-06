@@ -3,42 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/entidad/ImagesView.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/DetalleCompraBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/CrearSerie.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/entidad/Serie.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/DetalleCompraSerieBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/SerieFacade.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/UserLog.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/Template/master.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/PeliculaJpaController.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/entidad/Pelicula.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/ComprapeliculaFacade.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/CompraSerieBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/PeliculaPojo.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/DetallecompraserieFacade.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/Home.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/SerieJpaController.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/UsuarioFacade.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/entidad/Detallecomprapelicula.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/DetallecomprapeliculaFacade.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/UsuarioBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/PeliculaBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/CompraBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/EditarUsuario.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/DetallecomprapeliculaJpaController.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/UsuarioJpaController.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/CrearPelicula.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/modelo/SerieBean.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/Login.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/PeliculaFacade.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/entidad/Usuario.java</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/descripcion_pelicula.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/Registro.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/Historial-Usuario.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/view/carrito.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/web/Template/components/header.xhtml</file>
-            <file>file:/C:/Users/tigre/Documents/a---Tec---a/Seg.Web/proyecto/Videoclub/Seg_Web_P/Prog_Web_PeliculasySeries/Prog_Web_PeliculasySeries/Videoclub/src/java/controlador/CategoriaJpaController.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/PeliculaBean.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/Actualizar_serie.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearSerie.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/conf/MANIFEST.MF</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearPelicula.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/SerieBean.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/entidad/Comprapelicula.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/WEB-INF/glassfish-resources.xml</file>
         </group>
     </open-files>
 </project-private>
