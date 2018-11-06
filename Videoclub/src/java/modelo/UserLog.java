@@ -1,4 +1,3 @@
-
 package modelo;
 
 import controlador.UsuarioFacade;
@@ -17,11 +16,12 @@ public class UserLog implements Serializable {
     private String contraseña;
     private int idCompra = 0;
     private int idCompraSerie = 0;
-    
+    private Exception failure;
+
     private UsuarioFacade usuarioFacade;
-    
+
     public UserLog() {
-        
+
     }
 
     public int getIdUsuario() {
@@ -55,7 +55,7 @@ public class UserLog implements Serializable {
     public void setIdCompra(int idCompra) {
         this.idCompra = idCompra;
     }
-    
+
     public int getIdCompraSerie() {
         return idCompraSerie;
     }
@@ -63,7 +63,7 @@ public class UserLog implements Serializable {
     public void setIdCompraSerie(int idCompraSerie) {
         this.idCompraSerie = idCompraSerie;
     }
-      
+
     public void submit() {
         FacesContext context = FacesContext.getCurrentInstance();
         if (correo.isEmpty() || contraseña.isEmpty()) {
@@ -82,5 +82,29 @@ public class UserLog implements Serializable {
             }
         }
     }
-    
+
+    public String logOutUser() {
+        failure = null;
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu no estas Logeado.", null));
+        context.getExternalContext().invalidateSession();
+        return "Login.xhtml?faces-redirect=true";
+    }
+
+    public boolean IsOnline(String email) {
+        //return isOnline;
+        if (email.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean IsOffline(String email) {
+        //return isOnline;
+        if (email.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+ 
 }

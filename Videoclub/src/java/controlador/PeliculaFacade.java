@@ -1,7 +1,10 @@
 
 package controlador;
 
+import controlador.exceptions.RollbackFailureException;
 import entidad.Pelicula;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,7 +18,7 @@ public class PeliculaFacade{
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("VideoclubPU");
     private UserTransaction utx;
     private PeliculaJpaController peliJpa = new PeliculaJpaController(emf);
-
+    
     public PeliculaFacade() {
         
     }
@@ -43,6 +46,15 @@ public class PeliculaFacade{
         peliculaPojo.setCantidad_almacen(pelicula.getCantidadAlmacen());
         peliculaPojo.setCantidad_rentas(pelicula.getCantidadRenta());
         return peliculaPojo;
+    }
+        public void crearPelicula(Pelicula pelicula) {
+        try {
+            peliJpa.create(pelicula);
+        } catch (RollbackFailureException ex) {
+            Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

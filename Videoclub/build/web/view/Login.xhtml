@@ -33,15 +33,15 @@ and open the template in the editor.
                                                     <p:growl autoUpdate="true"/>
                                                     <div class="row">
                                                         <div class="col s12 input-field">
-                                                            <p:inputText id="username" value="#{bean.correo}" required="false" requiredMessage="Usuario es Requerido"/>
+                                                            <p:inputText id="username" value="#{userLog.correo}" required="false" requiredMessage="Usuario es Requerido"/>
                                                             <p:outputLabel for="username" value="Correo"/>
                                                         </div>
                                                         <div class="col s12 input-field">
-                                                            <p:inputText id="password" value="#{bean.contraseña}" required="false" requiredMessage="Contraseña es requerida"/>
+                                                            <p:inputText id="password" value="#{userLog.contraseña}" required="false" requiredMessage="Contraseña es requerida"/>
                                                             <p:outputLabel for="username" value="Contraseña"/>
                                                         </div>
                                                         <div class="col s6 input-field">
-                                                            <p:commandLink value="Ingresar" class="btn btn-large" action="#{bean.submit()}"/>
+                                                            <p:commandLink value="Ingresar" class="btn btn-large" action="#{userLog.submit()}"/>
                                                         </div>
                                                         <div class="col s6 input-field">
                                                             <p:commandLink value="Registrarse" class="btn btn-large" action="Registro.xhtml" />

@@ -3,8 +3,12 @@ package modelo;
 import controlador.PeliculaFacade;
 import controlador.PeliculaPojo;
 import entidad.Categoria;
+import entidad.Pelicula;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 @Named(value = "peliculaBean")
 @RequestScoped
@@ -27,6 +31,10 @@ public class PeliculaBean {
 
     private PeliculaFacade peliculaFacade;
     private PeliculaPojo peliculaPojo;
+    private PeliculaFacade PeliculaFacade = new PeliculaFacade();
+    private FacesContext fc = FacesContext.getCurrentInstance();
+    private ExternalContext ec = fc.getExternalContext();
+    private Pelicula pelicula = new Pelicula();
 
     public PeliculaBean() {
     }
@@ -182,5 +190,51 @@ public class PeliculaBean {
         setCantidad_rentas(peliculaPojo.getCantidad_rentas());
         setCategoria_nombre(idCategoria.getNombreCategoria());
         return "descripcion_pelicula";
+    }
+
+    public void alta() {
+
+        if (titulo.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir el titiulo"));
+        } else if (sinopsis.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir la sinopsis"));
+        } else if (clasificacion.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir la clasificacion"));
+        } else if (director.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir el director"));
+        } else if (año.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir el año"));
+        } else if (duracion.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir la duracion"));
+        } else if (categoria_nombre.equals("")) {
+            fc.addMessage("", new FacesMessage("Te falta escribir la categoria"));
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            Pelicula pelicula = new Pelicula();
+            pelicula.setIdPelicula(idPelicula);
+            pelicula.setIdCategoria(idCategoria);
+            pelicula.setTitulo(titulo);
+            pelicula.setSinopsis(sinopsis);
+            pelicula.setRating(rating);
+            pelicula.setPrecioRenta(precio_renta);
+            pelicula.setPrecioCompra(precio_compra);
+            pelicula.setClasificacion(clasificacion);
+            pelicula.setDirector(director);
+            pelicula.setAño(año);
+            pelicula.setCantidadAlmacen(cantidad_almacen);
+            pelicula.setCantidadRenta(cantidad_renta);
+            pelicula.setDuracion(duracion);
+  
+            PeliculaFacade.crearPelicula(pelicula);
+            System.out.println("yeahhhhhhhhhhhhhhhhhhhhhh");
+            context.addMessage("", new FacesMessage("Se registro correctamente"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Registro Existoso", "Advertencia"));
+            try {
+                FacesContext contex = FacesContext.getCurrentInstance();
+                contex.getExternalContext().redirect("/Videoclub/faces/view/CrearPelicula.xhtml");
+            } catch (Exception e) {
+                System.out.println("Me voy al carajo, no funciona esta redireccion");
+            }
+        }
     }
 }

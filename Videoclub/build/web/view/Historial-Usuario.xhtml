@@ -23,7 +23,7 @@ and open the template in the editor.
                 <h:form class="col s12">
                     <br/>
                     <div class="row">
-                        <p:fieldset legend="Historial de Compras" >
+                        <p:fieldset legend="Historial de Compras">
                             <p:panelGrid columns="4">
                                 <p:dataTable var="comp" value="">
                                     <p:column headerText="Fecha de Compra">
@@ -33,10 +33,10 @@ and open the template in the editor.
                                         <h:outputText value="Completado"/>
                                     </p:column>
                                     <p:column headerText="Nombre del Producto">
-                                        <h:outputText value="Thor"/>
+                                        <h:outputText value="#{comp.idPelicula.titulo}"/>
                                     </p:column>
                                     <p:column headerText="Total Pagado">
-                                        <h:outputText value="99$"/>
+                                        <h:outputText value="#{detalleCompraBean.total_pago}"/>
                                     </p:column>
                                 </p:dataTable>
                             </p:panelGrid>

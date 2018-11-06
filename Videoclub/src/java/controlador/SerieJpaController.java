@@ -2,6 +2,7 @@
 package controlador;
 
 import controlador.exceptions.NonexistentEntityException;
+import controlador.exceptions.PreexistingEntityException;
 import controlador.exceptions.RollbackFailureException;
 import entidad.Serie;
 import java.io.Serializable;
@@ -39,6 +40,9 @@ public class SerieJpaController implements Serializable {
                 utx.rollback();
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
+            }
+            if (findSerie(serie.getIdSerie()) != null) {
+                throw new PreexistingEntityException("Serie " + serie + " already exists.", ex);
             }
             throw ex;
         } finally {

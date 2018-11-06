@@ -164,11 +164,25 @@ public class UsuarioBean {
         } else if (telefono_fijo.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu telefono fijo"));
         } else {
+            Usuario user = new Usuario();
             FacesContext context = FacesContext.getCurrentInstance();
-            Usuario user = new Usuario(idUsuario, nombre, contraseña, apellidoP, apellidoM, correo, calle, no_int, no_ext, cp, celular, telefono_fijo);
-            usuarioFacade.crearUsuario(user);
+            user.setCp(cp);
+            user.setContraseña(contraseña);
+            user.setApellidoM(apellidoM);
+            user.setApellidoP(apellidoP);
+            user.setCalle(calle);
+            user.setCelular(celular);
+            user.setIdUsuario(idUsuario);
+            user.setNoExt(no_ext);
+            user.setNoInt(no_int);
+            user.setCorreo(correo);
+            user.setIdUsuario(idUsuario);
+            user.setNombre(nombre);
+            user.setTelefonoFijo(telefono_fijo);
+            usuarioFacade.crearUsuario(user);      
             System.out.println("yeahhhhhhhhhhhhhhhhhhhhhh");
             context.addMessage("", new FacesMessage("Se registro correctamente"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Registro Existoso", "Advertencia"));
             try {
                 FacesContext contex = FacesContext.getCurrentInstance();
                 contex.getExternalContext().redirect("/Videoclub/faces/view/Login.xhtml");
@@ -176,6 +190,29 @@ public class UsuarioBean {
                 System.out.println("Me voy al carajo, no funciona esta redireccion");
             }
         }
+    }
+
+    public void editar(String correo) {
+        Usuario usuario = usuarioFacade.buscarPorcorreo(correo);
+        FacesContext context = FacesContext.getCurrentInstance();
+        usuario.setCalle(calle);
+        usuario.setCelular(celular);
+        usuario.setContraseña(contraseña);
+        usuario.setCp(cp);
+        usuario.setNoExt(no_ext);
+        usuario.setNoInt(no_int);
+        usuario.setTelefonoFijo(telefono_fijo);
+        usuarioFacade.editarUsuario(usuario);
+        System.out.println("aqui esta modificandoxD");
+        context.addMessage("", new FacesMessage("Se edito correctamente"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Registro Existoso", "Advertencia"));
+        try {
+            FacesContext contex = FacesContext.getCurrentInstance();
+            contex.getExternalContext().redirect("/Videoclub/faces/view/Home.xhtml");
+        } catch (Exception e) {
+            System.out.println("Me voy al carajo, no funciona esta redireccion");
+        }
+
     }
 
     public String buscaBycorreo() {
@@ -194,12 +231,12 @@ public class UsuarioBean {
             this.cp = usuarios.getCp();
             this.celular = usuarios.getCelular();
             this.telefono_fijo = usuarios.getTelefonoFijo();
-            System.out.println("Aqui esta"+correo);
+            System.out.println("Aqui esta" + correo);
             return "Resultado";
-           
+
         }
         FacesContext fc = FacesContext.getCurrentInstance();
-        fc.addMessage("", new FacesMessage("No existe un amigo con ese correo"));
+        fc.addMessage("", new FacesMessage("No existe un compa con ese correo"));
         return null;
     }
 
@@ -221,4 +258,5 @@ public class UsuarioBean {
             }
         }
     }
+
 }

@@ -21,41 +21,37 @@
                     <p:graphicImage library="img" name="serie.png" style="width: 180px;"/>
                 </h:panelGrid>
                 <div>
-                    <h:form>
+                    <h:form id="myForm">
                         <h:panelGrid columns="2" cellspacing="30">
-                            <p:panel id="basic" header="The Walking Dead" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
-                                <h:panelGrid columns="2" cellpadding="20">
-                                    <p:graphicImage library="img" name="dead.jpg" style="width: 300px;"/>
-                                    <h:panelGrid columns="2" cellpadding="10">
-                                        <h:outputLabel styleClass="caracteristica"><b>Sinopsis</b></h:outputLabel>
-                                        <h:outputText style="text-align: justify;font-size: 11pt;"
-                                                      value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family." />
+                            <p:panel id="basic" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
+                                <h:inputHidden value="#{serieBean.idSerie}" id="movie"/>
+                                <p:fieldset legend="#{serieBean.titulo}" style="color: black">
+                                    <h:panelGrid columns="2" cellpadding="20">
+                                        <p:graphicImage library="img" name="serie#{serieBean.idSerie}.jpg" style="width: 300px;"/>
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <h:outputLabel styleClass="caracteristica"><b>Sinopsis</b></h:outputLabel>
+                                            <h:outputText style="text-align: justify;font-size: 11pt;"
+                                                          value="#{serieBean.sinopsis}" />
 
-                                        <h:outputLabel styleClass="caracteristica"><b>Clasificación</b></h:outputLabel>
-                                        <h:outputText value="PG-15"/>
+                                            <h:outputLabel styleClass="caracteristica"><b>Rating</b></h:outputLabel>
+                                            <h:outputText value="#{serieBean.rating}"/>
 
-                                        <h:outputLabel styleClass="caracteristica"><b>Rating</b></h:outputLabel>
-                                        <h:outputText value="9.5"/>
+                                            <h:outputLabel styleClass="caracteristica"><b>Categoria</b></h:outputLabel>
+                                            <h:outputText value="#{serieBean.categoria_nombre}"/>
 
-                                        <h:outputLabel styleClass="caracteristica"><b>Director</b></h:outputLabel>
-                                        <h:outputText value="Juan Manuel Garcia Perez"/>
+                                            <h:outputLabel styleClass="caracteristica"><b>Numero de Temporadas</b></h:outputLabel>
+                                            <h:outputText value="#{serieBean.numero_temporadas}"/>
 
-                                        <h:outputLabel styleClass="caracteristica"><b>Categoria</b></h:outputLabel>
-                                        <h:outputText value="Drama"/>
-
-                                        <h:outputLabel styleClass="caracteristica"><b>Numero de Temporadas</b></h:outputLabel>
-                                        <h:outputText value="7"/>
-
-                                        <h:outputLabel styleClass="caracteristica"><b>Precio</b></h:outputLabel>
-                                        <h:outputText value="$1500.99"/>
+                                            <h:outputLabel styleClass="caracteristica"><b>Precio de Compra</b></h:outputLabel>
+                                            <h:outputText value="#{serieBean.precio}"/>
+                                        </h:panelGrid>
                                     </h:panelGrid>
-                                </h:panelGrid>
+                                </p:fieldset>
                             </p:panel>
 
                             <p:panel id="basic2" header="Opciones" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
                                 <h:panelGrid columns="1" cellpadding="20">
-
-                                    <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;"/>
+                                    <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;" action="#{compraSerieBean.crearCompra(userLog.correo)}"/>
                                 </h:panelGrid>
                             </p:panel>
                         </h:panelGrid>

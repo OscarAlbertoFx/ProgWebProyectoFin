@@ -67,12 +67,14 @@ public class UsuarioJpaController implements Serializable {
             }
         }
     }
+ 
 
     public void edit(Usuario usuario) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            utx = em.getTransaction();
+            utx.begin();
             usuario = em.merge(usuario);
             utx.commit();
         } catch (Exception ex) {
@@ -99,8 +101,10 @@ public class UsuarioJpaController implements Serializable {
     public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            utx = em.getTransaction();
+            utx.begin();
+            
             Usuario usuario;
             try {
                 usuario = em.getReference(Usuario.class, id);

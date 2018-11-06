@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Carrito de Compras</title>
     </h:head>
@@ -20,16 +21,32 @@
                         <h:panelGrid columns="2">
                             <p:panel id="carro_compra" header="Carrito de Compras" style="margin-bottom:20px;font-size: 15pt;">
 
-                                <p:dataTable var="car" value="">
+                                <p:dataTable var="comp" value="#{detalleCompraBean.valores}">
                                     <p:column headerText="Nombre">
-                                        <h:outputText value="El padrino" />
+                                        <h:outputText value="#{comp.idPelicula.titulo}" />
                                     </p:column>
+                                    
                                     <p:column headerText="Tipo">
                                         <h:outputText value="Pelicula" />
                                     </p:column>
-
+                                        
                                     <p:column headerText="Precio">
-                                        <h:outputText value="$1000" />
+                                        <h:outputText value="#{comp.subtotal}" />
+                                    </p:column>
+
+                                </p:dataTable>
+                                
+                                <p:dataTable var="comp" value="#{detalleCompraSerieBean.valores}">
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{comp.idSerie.titulo}" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Tipo">
+                                        <h:outputText value="Serie" />
+                                    </p:column>
+                                        
+                                    <p:column headerText="Precio">
+                                        <h:outputText value="#{comp.subtotal}" />
                                     </p:column>
 
                                 </p:dataTable>
@@ -64,14 +81,14 @@
                         <p:graphicImage library="img" name="pago.png" style="width: 185px;"/> 
                         <p:panel style="width: 250px;">
                             <h:outputText value="Total a Pagar: " style="font-size: 12pt;"/>
-                            <h:outputText value="$1500" style="font-size: 13pt;"/>
+                            <h:outputText value="#{detalleCompraBean.total_pago}" style="font-size: 13pt;"/>
                         </p:panel>
                                                
                     </h:panelGroup>
                     <br/>
                     <h:form>
                         <p:commandLink value="Confirmar Compra" styleClass="btn btn-large" style="background-color: #00C853;font-size: 12pt;color: white"/>
-                        <p:commandLink value="Vaciar Carrito" styleClass="btn btn-large" style="background-color: #FF1744;font-size: 12pt;margin-left: 10px;color: white"/>
+                        <p:commandLink value="Vaciar Carrito" styleClass="btn btn-large" style="background-color: #FF1744;font-size: 12pt;margin-left: 10px;color: white" action="#{compraBean.vaciar(userLog.correo)}"/>
                     </h:form>
                     <br/>
                     <br/>

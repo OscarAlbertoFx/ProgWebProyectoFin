@@ -42,9 +42,19 @@ public class UsuarioFacade {
         }
     }
 
+    public void editarUsuario(Usuario usuario) {
+        try {
+            userJpa.edit(usuario);
+        } catch (RollbackFailureException ex) {
+            Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public Usuario buscarPorcorreo(String Correo) {
         Usuario user;
-        user = userJpa.findCuates(Correo);
+        user = userJpa.findByCorreo(Correo);
         return user;
     }
 
@@ -69,7 +79,7 @@ public class UsuarioFacade {
         }
         return false;
     }
-    
+
     public boolean validarUsuario(Usuario user, String pwd) {
         String actLogin, actPwd;
         actPwd = user.getContraseña();

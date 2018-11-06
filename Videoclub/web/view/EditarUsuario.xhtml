@@ -21,37 +21,12 @@ and open the template in the editor.
         <ui:define name="content">
             <h:body styleClass="cyan lighten-5">
                 <div class="row">
-                    <h:form class="col s12" title="Registro">
+                    <h:form class="col s12" title="Actualizar Datos">
                         <p:fieldset legend="Registro">
                             <p:panel id="panelPD" header="Datos Personales" style="margin-bottom:10px;">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="row">
-                                            <div class="input-field col s4">                                            
-                                                <p:outputLabel for="txtNombre" value="Nombre"/>
-                                                <p:inputText id="txtNombre" value="#{bean.nombre}" required="true" requiredMessage="Campo Requerido" />
-                                                <p:message for="txtNombre"/>
-                                            </div>
-                                            <div class="input-field col s4">
-                                                <p:outputLabel for="txtApP" value="Apellido Paterno"/>
-                                                <p:inputText id="txtApP" value="#{bean.apellidoP}" required="true" requiredMessage="Campo Requerido"/>
-                                                <p:message for="txtApP"/>
-                                            </div>
-                                            <div class="input-field col s4">
-                                                <p:outputLabel for="txtApM" value="ApellidoMaterno"/>
-                                                <p:inputText id="txtApM" value="#{bean.apellidoM}" required="true" requiredMessage="Campo Requerido" />
-                                                <p:message for="txtApM"/>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <p:outputLabel for="txtFN" value="Fecha de Nacimiento"/>
-                                                <p:calendar id="txtFN" required="false" locale="es" requiredMessage="Campo Requerido"/>
-                                                <p:message for="txtFN"/>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <p:outputLabel for="txtCorreo" value="Correo"/>
-                                                <p:inputText id="txtCorreo" value="#{bean.correo}" required="true" type="email" requiredMessage="Campo Requerido" />
-                                                <p:message for="txtCorreo"/>
-                                            </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtContraseña" value="Contraseña"/>
                                                 <p:password id="txtContraseña" value="#{bean.contraseña}" match="txtRContraseña" validatorMessage="Las claves no Coiciden"
@@ -105,7 +80,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </p:panel>
-                            <p:commandLink value="Registrarse" action="#{bean.alta()}" class="btn btn-large" update="panelED, panelPD"/>
+                            <p:commandLink value="Actualizar" action="#{bean.editar(userLog.correo)}" class="btn btn-large" update="panelED, panelPD"/>
                         </p:fieldset>
                     </h:form>
                 </div>

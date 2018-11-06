@@ -6,6 +6,7 @@
 package controlador;
 
 import controlador.exceptions.NonexistentEntityException;
+import controlador.exceptions.PreexistingEntityException;
 import controlador.exceptions.RollbackFailureException;
 import java.io.Serializable;
 import javax.persistence.Query;
@@ -42,22 +43,16 @@ public class PeliculaJpaController implements Serializable {
             em = getEntityManager();
             utx = em.getTransaction();
             utx.begin();
-            Categoria idCategoria = pelicula.getIdCategoria();
-            if (idCategoria != null) {
-                idCategoria = em.getReference(idCategoria.getClass(), idCategoria.getIdCategoria());
-                pelicula.setIdCategoria(idCategoria);
-            }
             em.persist(pelicula);
-            if (idCategoria != null) {
-                idCategoria.getPeliculaList().add(pelicula);
-                idCategoria = em.merge(idCategoria);
-            }
             utx.commit();
         } catch (Exception ex) {
             try {
                 utx.rollback();
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
+            }
+            if (findPelicula(pelicula.getIdPelicula()) != null) {
+                throw new PreexistingEntityException("Pelicula " + pelicula + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -66,6 +61,7 @@ public class PeliculaJpaController implements Serializable {
             }
         }
     }
+
 
     public void edit(Pelicula pelicula) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
@@ -189,5 +185,5 @@ public class PeliculaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -19,43 +19,45 @@
                     <p:graphicImage library="img" name="movie.png" style="width: 150px;"/>
                 </h:panelGrid>
                 <div>
-                    <h:form>
+                    <h:form id="myForm">
                         <h:panelGrid columns="2" cellspacing="30">
+
                             <p:panel id="basic" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
-                                <p:fieldset legend="Thor" style="color: black">
+                                <p:fieldset legend="#{peliculaBean.titulo}" style="color: black">
+                                    <h:inputHidden value="#{peliculaBean.idPelicula}" id="movie"/>
                                     <h:panelGrid columns="2" cellpadding="20">
-                                        <p:graphicImage library="img" name="thor.png" style="width: 300px;"/>
+                                        <p:graphicImage library="img" name="peli#{peliculaBean.idPelicula}.jpg" style="width: 300px;"/>
                                         <h:panelGrid columns="2" cellpadding="10">
                                             <h:outputLabel styleClass="caracteristica"><b>Sinopsis</b></h:outputLabel>
                                             <h:outputText style="text-align: justify;font-size: 12pt;"
-                                                          value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family." />
+                                                          value="#{peliculaBean.sinopsis}" />
 
                                             <h:outputLabel styleClass="caracteristica"><b>Clasificación</b></h:outputLabel>
-                                            <h:outputText value="PG-15"/>
+                                            <h:outputText value="#{peliculaBean.clasificacion}"/>
 
                                             <h:outputLabel styleClass="caracteristica"><b>Rating</b></h:outputLabel>
-                                            <h:outputText value="9.5"/>
+                                            <h:outputText value="#{peliculaBean.rating}"/>
 
                                             <h:outputLabel styleClass="caracteristica"><b>Director</b></h:outputLabel>
-                                            <h:outputText value="Juan Manuel Garcia Perez"/>
+                                            <h:outputText value="#{peliculaBean.director}"/>
 
                                             <h:outputLabel styleClass="caracteristica"><b>Categoria</b></h:outputLabel>
-                                            <h:outputText value="Drama"/>
+                                            <h:outputText value="#{peliculaBean.categoria_nombre}"/>
 
                                             <h:outputLabel styleClass="caracteristica"><b>Precio de Compra</b></h:outputLabel>
-                                            <h:outputText value="$1500.99"/>
+                                            <h:outputText value="#{peliculaBean.precio_compra}"/>
 
                                             <h:outputLabel styleClass="caracteristica"><b>Precio de Renta</b></h:outputLabel>
-                                            <h:outputText value="$50"/>
+                                            <h:outputText value="#{peliculaBean.precio_renta}"/>
                                         </h:panelGrid>
                                     </h:panelGrid>
                                 </p:fieldset>
                             </p:panel>
                             <p:panel id="basic2" header="Opciones" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
-
-                                <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;margin-bottom: 10px;"/>
-                                <h:commandLink value="Rentar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #00C853;width: 200px;"/>
+                                <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;margin-bottom: 10px;" action="#{compraBean.crearCompra(userLog.correo)}"/>
+                                <h:commandLink value="Rentar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #00C853;width: 200px;" action="#{compraBean.crearRenta(userLog.correo)}"/>
                             </p:panel>
+
                         </h:panelGrid>
                     </h:form>
                 </div>
