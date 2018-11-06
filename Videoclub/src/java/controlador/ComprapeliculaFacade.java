@@ -50,4 +50,8 @@ public class ComprapeliculaFacade{
     public void update(Comprapelicula compra) throws Exception{
         compraJpa.edit(compra);
     }
+    
+    public void remove(int idCompraP) throws Exception{
+        compraJpa.destroy(idCompraP);
+    }
 }

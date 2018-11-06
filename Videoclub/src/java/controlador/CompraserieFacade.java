@@ -47,5 +47,9 @@ public class CompraserieFacade {
     public void update(Compraserie compra) throws Exception{
         compraSerieJpa.edit(compra);
     }
+    
+    public void remove(int idCompraSerie) throws Exception{
+        compraSerieJpa.destroy(idCompraSerie);
+    }
 
 }

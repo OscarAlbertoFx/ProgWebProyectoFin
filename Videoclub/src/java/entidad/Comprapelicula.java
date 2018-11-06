@@ -61,6 +61,8 @@ public class Comprapelicula implements Serializable {
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompraPelicula")
+    private List<Datospagopelicula> datospagopeliculaList;
 
     public Comprapelicula() {
     }
@@ -116,6 +118,15 @@ public class Comprapelicula implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    @XmlTransient
+    public List<Datospagopelicula> getDatospagopeliculaList() {
+        return datospagopeliculaList;
+    }
+
+    public void setDatospagopeliculaList(List<Datospagopelicula> datospagopeliculaList) {
+        this.datospagopeliculaList = datospagopeliculaList;
     }
 
     @Override

@@ -14,15 +14,24 @@
                 <h:body>
                     <div class="container">
                         <h:form>
-                            <p:outputLabel value="Categoria 1" style="font-size: 28px; color: black"/>
+                            <p:outputLabel value="Peliculas" style="font-size: 28px; color: black"/>
                             <div style="border: transparent">
-                                <p:commandLink id="link" action="descripcion_pelicula.xhtml">
+                                <p:dataTable var="comp" value="#{peliculaBean.valores}" style="border: 0px;">
+                                    <p:column style="text-align: center">
+                                        <p:panelGrid columns="1">
+                                            <h:outputText value="#{comp.titulo}" style="font-size: 14pt;" />
+                                            <h:graphicImage library="img" name="peli#{comp.idPelicula}.jpg" style="width: 120px;"/>
+                                            <p:commandLink value="Ver más" styleClass="btn btn-large" style="background-color: #00C853;font-size: 12pt;color: white" action="#{peliculaBean.buscar(comp.idPelicula)}"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                </p:dataTable>
+                                <!--<p:commandLink id="link" action="descripcion_pelicula.xhtml">
                                     <h:graphicImage styleClass="content" url="../resources/img/peli1.jpg" height="188" width="220"/>
                                     <h:graphicImage styleClass="content" url="../resources/img/peli2.jpg" height="188" width="220"/>
                                     <h:graphicImage styleClass="content" url="../resources/img/peli3.jpg" height="188" width="220"/>
                                     <h:graphicImage styleClass="content" url="../resources/img/peli4.jpg" height="188" width="220"/>
                                     <h:graphicImage styleClass="content" url="../resources/img/peli5.jpg" height="188" width="220"/>
-                                </p:commandLink>
+                                </p:commandLink>-->
                             </div>
                             <p:outputLabel value="Categoria 2" style="font-size: 28px; color: black"/>
                             <div style="border: transparent">

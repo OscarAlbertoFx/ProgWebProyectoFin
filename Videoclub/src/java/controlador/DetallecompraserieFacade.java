@@ -51,4 +51,11 @@ public class DetallecompraserieFacade{
         return detalleSerieJpa.obtenerCompra(idCompra);
     }
     
+    public void remove(Compraserie idCompra) throws Exception{
+        List<Detallecompraserie> registros = detalleSerieJpa.obtenerCompra(idCompra);
+        for (int i = 0; i < registros.size(); i++) {
+            detalleSerieJpa.destroy(registros.get(i).getIdDetalleCompraSerie());
+        }
+    }
+    
 }

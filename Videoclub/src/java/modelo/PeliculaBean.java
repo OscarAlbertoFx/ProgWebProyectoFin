@@ -4,6 +4,7 @@ import controlador.PeliculaFacade;
 import controlador.PeliculaPojo;
 import entidad.Categoria;
 import entidad.Pelicula;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -35,6 +36,7 @@ public class PeliculaBean {
     private FacesContext fc = FacesContext.getCurrentInstance();
     private ExternalContext ec = fc.getExternalContext();
     private Pelicula pelicula = new Pelicula();
+    private List<Pelicula> valores;
 
     public PeliculaBean() {
     }
@@ -150,6 +152,13 @@ public class PeliculaBean {
     public void setCategoria_nombre(String categoria_nombre) {
         this.categoria_nombre = categoria_nombre;
     }
+       public List<Pelicula> getValores() {
+        return valores;
+    }
+
+    public void setValores(List<Pelicula> valores) {
+        this.valores = valores;
+    }
 
     public String buscar_descripcion() {
         peliculaFacade = new PeliculaFacade();
@@ -224,7 +233,7 @@ public class PeliculaBean {
             pelicula.setCantidadAlmacen(cantidad_almacen);
             pelicula.setCantidadRenta(cantidad_renta);
             pelicula.setDuracion(duracion);
-  
+
             PeliculaFacade.crearPelicula(pelicula);
             System.out.println("yeahhhhhhhhhhhhhhhhhhhhhh");
             context.addMessage("", new FacesMessage("Se registro correctamente"));

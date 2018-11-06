@@ -113,8 +113,9 @@ public class DetallecomprapeliculaJpaController implements Serializable {
     public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            utx = em.getTransaction();
+            utx.begin();
             Detallecomprapelicula detallecomprapelicula;
             try {
                 detallecomprapelicula = em.getReference(Detallecomprapelicula.class, id);
@@ -188,24 +189,24 @@ public class DetallecomprapeliculaJpaController implements Serializable {
             em.close();
         }
     }
-    
-    public List<Detallecomprapelicula> obtenerCompra(Comprapelicula idCompra){
+
+    public List<Detallecomprapelicula> obtenerCompra(Comprapelicula idCompra) {
         List<Detallecomprapelicula> compras;
         EntityManager em = getEntityManager();
-        System.out.println("Buscando deatlles de compra por idCOmpra : "+idCompra);
+        System.out.println("Buscando deatlles de compra por idCOmpra : " + idCompra);
         Query consulta = em.createNamedQuery("Detallecomprapelicula.findAll");
-        compras=consulta.getResultList();
+        compras = consulta.getResultList();
         for (int i = 0; i < compras.size(); i++) {
             System.out.println(compras.get(i));
         }
         for (int i = 0; i < compras.size(); i++) {
             if (!compras.get(i).getIdCompra().equals(idCompra)) {
-                System.out.println("Borre "+compras.get(i));
+                System.out.println("Borre " + compras.get(i));
                 compras.remove(i);
                 i--;
             }
         }
         return compras;
     }
-    
+
 }

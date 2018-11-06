@@ -63,6 +63,8 @@ public class Compraserie implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaEntrega;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompraSerie")
+    private List<Datospagoserie> datospagoserieList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompraSerie")
     private List<Detallecompraserie> detallecompraserieList;
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false)
@@ -112,6 +114,15 @@ public class Compraserie implements Serializable {
 
     public void setFechaEntrega(Date fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
+    }
+
+    @XmlTransient
+    public List<Datospagoserie> getDatospagoserieList() {
+        return datospagoserieList;
+    }
+
+    public void setDatospagoserieList(List<Datospagoserie> datospagoserieList) {
+        this.datospagoserieList = datospagoserieList;
     }
 
     @XmlTransient

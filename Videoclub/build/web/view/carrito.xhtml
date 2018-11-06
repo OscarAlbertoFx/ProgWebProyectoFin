@@ -81,13 +81,13 @@
                         <p:graphicImage library="img" name="pago.png" style="width: 185px;"/> 
                         <p:panel style="width: 250px;">
                             <h:outputText value="Total a Pagar: " style="font-size: 12pt;"/>
-                            <h:outputText value="#{detalleCompraBean.total_pago}" style="font-size: 13pt;"/>
+                            <h:outputText value="$#{detalleCompraBean.total_pago}" style="font-size: 13pt;"/>
                         </p:panel>
                                                
                     </h:panelGroup>
                     <br/>
                     <h:form>
-                        <p:commandLink value="Confirmar Compra" styleClass="btn btn-large" style="background-color: #00C853;font-size: 12pt;color: white"/>
+                        <p:commandLink value="Confirmar Compra" styleClass="btn btn-large" style="background-color: #00C853;font-size: 12pt;color: white" action="#{compraBean.confirmar()}" />
                         <p:commandLink value="Vaciar Carrito" styleClass="btn btn-large" style="background-color: #FF1744;font-size: 12pt;margin-left: 10px;color: white" action="#{compraBean.vaciar(userLog.correo)}"/>
                     </h:form>
                     <br/>

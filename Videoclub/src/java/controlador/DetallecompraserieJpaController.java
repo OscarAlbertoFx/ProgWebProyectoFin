@@ -7,21 +7,18 @@ package controlador;
 
 import controlador.exceptions.NonexistentEntityException;
 import controlador.exceptions.RollbackFailureException;
-import entidad.Comprapelicula;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import entidad.Compraserie;
-import entidad.Detallecomprapelicula;
 import entidad.Detallecompraserie;
 import entidad.Serie;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -82,8 +79,9 @@ public class DetallecompraserieJpaController implements Serializable {
     public void edit(Detallecompraserie detallecompraserie) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            utx = em.getTransaction();
+            utx.begin();
             Detallecompraserie persistentDetallecompraserie = em.find(Detallecompraserie.class, detallecompraserie.getIdDetalleCompraSerie());
             Compraserie idCompraSerieOld = persistentDetallecompraserie.getIdCompraSerie();
             Compraserie idCompraSerieNew = detallecompraserie.getIdCompraSerie();
@@ -139,8 +137,9 @@ public class DetallecompraserieJpaController implements Serializable {
     public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            utx = em.getTransaction();
+            utx.begin();
             Detallecompraserie detallecompraserie;
             try {
                 detallecompraserie = em.getReference(Detallecompraserie.class, id);
@@ -219,24 +218,24 @@ public class DetallecompraserieJpaController implements Serializable {
             em.close();
         }
     }
-    
-    public List<Detallecompraserie> obtenerCompra(Compraserie idCompra){
+
+    public List<Detallecompraserie> obtenerCompra(Compraserie idCompra) {
         List<Detallecompraserie> compras;
         EntityManager em = getEntityManager();
-        System.out.println("Buscando deatlles de compra por idCOmpra : "+idCompra);
+        System.out.println("Buscando deatlles de compra por idCOmpra : " + idCompra);
         Query consulta = em.createNamedQuery("Detallecompraserie.findAll");
-        compras=consulta.getResultList();
+        compras = consulta.getResultList();
         for (int i = 0; i < compras.size(); i++) {
             System.out.println(compras.get(i));
         }
         for (int i = 0; i < compras.size(); i++) {
             if (!compras.get(i).getIdCompraSerie().equals(idCompra)) {
-                System.out.println("Borre "+compras.get(i));
+                System.out.println("Borre " + compras.get(i));
                 compras.remove(i);
                 i--;
             }
         }
         return compras;
     }
-    
+
 }

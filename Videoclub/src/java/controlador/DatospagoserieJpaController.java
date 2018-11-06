@@ -1,34 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import controlador.exceptions.NonexistentEntityException;
-import controlador.exceptions.PreexistingEntityException;
 import controlador.exceptions.RollbackFailureException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import entidad.Categoria;
-import entidad.Detallecomprapelicula;
-import entidad.Pelicula;
+import entidad.Compraserie;
+import entidad.Datospagoserie;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author aaron
- */
-public class PeliculaJpaController implements Serializable {
+public class DatospagoserieJpaController implements Serializable {
 
-    public PeliculaJpaController(EntityManagerFactory emf) {
+    public DatospagoserieJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityTransaction utx = null;
@@ -38,22 +28,28 @@ public class PeliculaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Pelicula pelicula) throws RollbackFailureException, Exception {
+    public void create(Datospagoserie datospagoserie) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             utx = em.getTransaction();
             utx.begin();
-            em.persist(pelicula);
+            Compraserie idCompraSerie = datospagoserie.getIdCompraSerie();
+            if (idCompraSerie != null) {
+                idCompraSerie = em.getReference(idCompraSerie.getClass(), idCompraSerie.getIdCompraSerie());
+                datospagoserie.setIdCompraSerie(idCompraSerie);
+            }
+            em.persist(datospagoserie);
+            if (idCompraSerie != null) {
+                idCompraSerie.getDatospagoserieList().add(datospagoserie);
+                idCompraSerie = em.merge(idCompraSerie);
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
                 utx.rollback();
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            if (findPelicula(pelicula.getIdPelicula()) != null) {
-                throw new PreexistingEntityException("Pelicula " + pelicula + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -63,28 +59,26 @@ public class PeliculaJpaController implements Serializable {
         }
     }
 
-
-    public void edit(Pelicula pelicula) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Datospagoserie datospagoserie) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            em = getEntityManager();
-            utx = em.getTransaction();
             utx.begin();
-            Pelicula persistentPelicula = em.find(Pelicula.class, pelicula.getIdPelicula());
-            Categoria idCategoriaOld = persistentPelicula.getIdCategoria();
-            Categoria idCategoriaNew = pelicula.getIdCategoria();
-            if (idCategoriaNew != null) {
-                idCategoriaNew = em.getReference(idCategoriaNew.getClass(), idCategoriaNew.getIdCategoria());
-                pelicula.setIdCategoria(idCategoriaNew);
+            em = getEntityManager();
+            Datospagoserie persistentDatospagoserie = em.find(Datospagoserie.class, datospagoserie.getIdDatosPagoSerie());
+            Compraserie idCompraSerieOld = persistentDatospagoserie.getIdCompraSerie();
+            Compraserie idCompraSerieNew = datospagoserie.getIdCompraSerie();
+            if (idCompraSerieNew != null) {
+                idCompraSerieNew = em.getReference(idCompraSerieNew.getClass(), idCompraSerieNew.getIdCompraSerie());
+                datospagoserie.setIdCompraSerie(idCompraSerieNew);
             }
-            pelicula = em.merge(pelicula);
-            if (idCategoriaOld != null && !idCategoriaOld.equals(idCategoriaNew)) {
-                idCategoriaOld.getPeliculaList().remove(pelicula);
-                idCategoriaOld = em.merge(idCategoriaOld);
+            datospagoserie = em.merge(datospagoserie);
+            if (idCompraSerieOld != null && !idCompraSerieOld.equals(idCompraSerieNew)) {
+                idCompraSerieOld.getDatospagoserieList().remove(datospagoserie);
+                idCompraSerieOld = em.merge(idCompraSerieOld);
             }
-            if (idCategoriaNew != null && !idCategoriaNew.equals(idCategoriaOld)) {
-                idCategoriaNew.getPeliculaList().add(pelicula);
-                idCategoriaNew = em.merge(idCategoriaNew);
+            if (idCompraSerieNew != null && !idCompraSerieNew.equals(idCompraSerieOld)) {
+                idCompraSerieNew.getDatospagoserieList().add(datospagoserie);
+                idCompraSerieNew = em.merge(idCompraSerieNew);
             }
             utx.commit();
         } catch (Exception ex) {
@@ -95,9 +89,9 @@ public class PeliculaJpaController implements Serializable {
             }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = pelicula.getIdPelicula();
-                if (findPelicula(id) == null) {
-                    throw new NonexistentEntityException("The pelicula with id " + id + " no longer exists.");
+                Integer id = datospagoserie.getIdDatosPagoSerie();
+                if (findDatospagoserie(id) == null) {
+                    throw new NonexistentEntityException("The datospagoserie with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -113,19 +107,19 @@ public class PeliculaJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            Pelicula pelicula;
+            Datospagoserie datospagoserie;
             try {
-                pelicula = em.getReference(Pelicula.class, id);
-                pelicula.getIdPelicula();
+                datospagoserie = em.getReference(Datospagoserie.class, id);
+                datospagoserie.getIdDatosPagoSerie();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The pelicula with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The datospagoserie with id " + id + " no longer exists.", enfe);
             }
-            Categoria idCategoria = pelicula.getIdCategoria();
-            if (idCategoria != null) {
-                idCategoria.getPeliculaList().remove(pelicula);
-                idCategoria = em.merge(idCategoria);
+            Compraserie idCompraSerie = datospagoserie.getIdCompraSerie();
+            if (idCompraSerie != null) {
+                idCompraSerie.getDatospagoserieList().remove(datospagoserie);
+                idCompraSerie = em.merge(idCompraSerie);
             }
-            em.remove(pelicula);
+            em.remove(datospagoserie);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -141,31 +135,19 @@ public class PeliculaJpaController implements Serializable {
         }
     }
 
-    public List<Pelicula> findPeliculaEntities() {
-        return findPeliculaEntities(true, -1, -1);
+    public List<Datospagoserie> findDatospagoserieEntities() {
+        return findDatospagoserieEntities(true, -1, -1);
     }
 
-    public List<Pelicula> findPeliculaAll(){
-        List<Pelicula> pelicula;
-        EntityManager em = getEntityManager();
-        System.out.println("Buscando peliculas");
-        Query consulta = em.createNamedQuery("Pelicula.findAll");
-        pelicula = consulta.getResultList();
-        for (int i = 0; i < pelicula.size(); i++) {
-            System.out.println(pelicula.get(i).getTitulo());
-        }
-        return pelicula;
-    }
-    
-    public List<Pelicula> findPeliculaEntities(int maxResults, int firstResult) {
-        return findPeliculaEntities(false, maxResults, firstResult);
+    public List<Datospagoserie> findDatospagoserieEntities(int maxResults, int firstResult) {
+        return findDatospagoserieEntities(false, maxResults, firstResult);
     }
 
-    private List<Pelicula> findPeliculaEntities(boolean all, int maxResults, int firstResult) {
+    private List<Datospagoserie> findDatospagoserieEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Pelicula.class));
+            cq.select(cq.from(Datospagoserie.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -177,20 +159,20 @@ public class PeliculaJpaController implements Serializable {
         }
     }
 
-    public Pelicula findPelicula(Integer id) {
+    public Datospagoserie findDatospagoserie(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Pelicula.class, id);
+            return em.find(Datospagoserie.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getPeliculaCount() {
+    public int getDatospagoserieCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Pelicula> rt = cq.from(Pelicula.class);
+            Root<Datospagoserie> rt = cq.from(Datospagoserie.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
@@ -198,5 +180,5 @@ public class PeliculaJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

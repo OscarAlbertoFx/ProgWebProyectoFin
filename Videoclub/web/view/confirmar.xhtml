@@ -13,110 +13,32 @@
         <h:outputScript library="js" name="materialize.min.js"/>
         <h:outputStylesheet library="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     </h:head>
+    <h:body>
         <ui:composition template="/Template/master.xhtml">
             <ui:define name="content">
-                <h:body styleClass="cyan lighten-5">
-                <h:form class="col s12">
-                    <br/>
-                    <div class="row">
-                        <p:fieldset legend="Confirmar datos de la compra" >
-                            <p:panelGrid columns="4">
-                                <p:dataTable var="comp" value="">
-                                    <p:column headerText="Fecha de Compra">
-                                        <h:outputText value="5/5/2018"/>                                        
-                                    </p:column>
-                                    <p:column headerText="Categoria">
-                                        <h:outputText value="Terror"/>                                                                                
-                                    </p:column>
-                                    <p:column headerText="Descripcion">
-                                        <h:outputText value=""/>
-                                    </p:column>
-                                    <p:column headerText="Nombre del Producto">
-                                        <h:outputText value="Thor"/>
-                                    </p:column>
-                                    <p:column headerText="Precio">
-                                        <h:outputText value="99$"/>
-                                    </p:column>
-                                </p:dataTable>
-                            </p:panelGrid>
-                            
-                            <p:panelGrid columns="4">
-                                <p:dataTable var="comp" value="">
-                                    <p:column headerText="Fecha de Compra">
-                                        <h:outputText value="5/5/2018"/>                                        
-                                    </p:column>
-                                    <p:column headerText="Categoria">
-                                        <h:outputText value="Comedia"/>                                                                                
-                                    </p:column>
-                                    <p:column headerText="Descripcion">
-                                        <h:outputText value=""/>
-                                    </p:column>
-                                    <p:column headerText="Nombre del Producto">
-                                        <h:outputText value="Thor"/>
-                                    </p:column>
-                                    <p:column headerText="Precio">
-                                        <h:outputText value="99$"/>
-                                    </p:column>
-                                </p:dataTable>
-                            </p:panelGrid>
-                        </p:fieldset>
-
-                    </div>
-                    <p:fieldset legend="Confirmar rentas">
-                        <p:dataTable var="rent" value="">
-                            <p:column headerText="Fecha de Renta">               
-                                <h:outputText value="5/5/2018"/>                        
-                            </p:column>
-                            <p:column headerText="Fecha de Entrega">
-                                <h:outputText value="30/5/2018"/>
-                            </p:column>
-                            <p:column headerText="Categoria">
-                                <h:outputText value="Terror"/>
-                            </p:column>
-                            <p:column headerText="Nombre del Producto">
-                                <h:outputText value="IronMan"/>
-                            </p:column>
-                            <p:column headerText="Total Pagado">
-                                <h:outputText value="80$"/>
-                            </p:column>
-                        </p:dataTable>
-                    </p:fieldset>
-                    <br/>
+                <h:form>
                     <p:fieldset legend="Datos de pago">
                         <p:dataTable value="DatosPago">
                             <p:column>
                                 <h:outputText value="Tarjeta"/><br/><br/><br/>
-                                <h:outputText value="Nombre"/><br/><br/><br/>
-                                <h:outputText value="Apellido"/><br/><br/><br/>
+                                <h:outputText value="Contraseña"/><br/><br/><br/>
                                 <h:outputText value="Fecha caducidad"/><br/><br/><br/>
                                 <h:outputText value="CVV"/>
                             </p:column>
                             <p:column>
-                                <h:inputText/><br/>
-                                <h:inputText/><br/>
-                                <h:inputText/><br/>
-                                <h:inputText/><br/>
-                                <h:inputText/>
+                                <p:inputText value="#{datosPagoPeliculaBean.tarjeta}" /><br/>
+                                <p:inputText value="#{datosPagoPeliculaBean.contraseña}" /><br/>
+                                <p:inputText value="#{datosPagoPeliculaBean.fecha_caducidad}" /><br/>
+                                <p:inputText value="#{datosPagoPeliculaBean.cvv}" /><br/>
                             </p:column>
                         </p:dataTable>
                     </p:fieldset>
                     <br/>
-                    <p:fieldset legend="Total">
-                        <p:dataTable value="total">
-                            <p:column>
-                                <h:outputText value="Total"/>
-                            </p:column>
-                            <p:column>
-                                <!--<p:outputLabel value="$ 23324423"/>-->
-                                <h:outputText value="$6889.000"/>
-                            </p:column>
-                        </p:dataTable>
-                    </p:fieldset>
-                    <p:commandButton value="Confirmar"/>
-                    <p:commandButton value="Cancelar "/>
+                    <p:commandLink value="Confirmar" styleClass="btn btn-large" style="background-color: #00C853;font-size: 12pt;color: white" action="#{datosPagoPeliculaBean.submit(userLog.correo)}"/>
+                    <p:commandLink value="Cancelar" styleClass="btn btn-large" style="background-color: #FF1744;font-size: 12pt;margin-left: 10px;color: white" action="#{datosPagoPeliculaBean.regresar()}"/>
                 </h:form>
-            </h:body>
             </ui:define>
         </ui:composition>
+    </h:body>
 </html>
 

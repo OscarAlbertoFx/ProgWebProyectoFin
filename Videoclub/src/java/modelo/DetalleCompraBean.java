@@ -34,13 +34,19 @@ public class DetalleCompraBean {
         detalleSerieFacade = new DetallecompraserieFacade();
         this.valores = (detalleFacade.filtrar(detalleFacade.getCompra(neededBean.getIdCompra())));
         compraFacade = new ComprapeliculaFacade();
-        double aux=0;
-        try{
+        double aux = 0;
+        try {
             aux = detalleSerieFacade.getCompra(neededBean.getIdCompraSerie()).getTotalCompra();
-        }catch(NullPointerException e){
-            aux=0;
+        } catch (NullPointerException e) {
+            aux = 0;
         }
-        this.total_pago = detalleFacade.getCompra(neededBean.getIdCompra()).getTotalCompra()+aux;
+        double aux2 = 0;
+        try {
+            aux2 = detalleFacade.getCompra(neededBean.getIdCompra()).getTotalCompra();
+        } catch (Exception e) {
+            aux2 = 0;
+        }
+        this.total_pago = (double) Math.round((aux2 + aux) * 100d) / 100d;
     }
 
     public int getIdDetalleCompra() {

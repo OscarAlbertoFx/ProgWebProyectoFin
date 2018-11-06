@@ -167,8 +167,9 @@ public class CompraserieJpaController implements Serializable {
     public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            utx = em.getTransaction();
+            utx.begin();
             Compraserie compraserie;
             try {
                 compraserie = em.getReference(Compraserie.class, id);

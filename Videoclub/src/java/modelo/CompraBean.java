@@ -2,22 +2,21 @@ package modelo;
 
 import controlador.CompraPeliculaPojo;
 import controlador.ComprapeliculaFacade;
-import controlador.ComprapeliculaJpaController;
+import controlador.CompraserieFacade;
 import controlador.DetalleCompraPojo;
 import controlador.DetallecomprapeliculaFacade;
+import controlador.DetallecompraserieFacade;
 import entidad.Comprapelicula;
 import entidad.Usuario;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedProperty;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Named(value = "compraBean")
 @RequestScoped
@@ -31,6 +30,8 @@ public class CompraBean {
 
     private ComprapeliculaFacade compraFacade;
     private DetallecomprapeliculaFacade detalleFacade;
+    private CompraserieFacade compraSerieFacade;
+    private DetallecompraserieFacade detalleSerieFacade;
 
     public CompraBean() {
 
@@ -80,7 +81,7 @@ public class CompraBean {
         if (!correo.equals("")) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             UserLog neededBean = (UserLog) facesContext.getApplication().createValueBinding("#{userLog}").getValue(facesContext);
-            if (neededBean.getIdCompra()==0) {
+            if (neededBean.getIdCompra() == 0) {
                 Calendar fecha = Calendar.getInstance();
                 Date now = fecha.getTime();
                 fecha.add(Calendar.DAY_OF_YEAR, 30);
@@ -101,7 +102,7 @@ public class CompraBean {
                 setFecha_entrega(compraN.getFechaEntrega());
                 neededBean.setIdCompra(compraN.getIdCompra());
                 System.out.println(neededBean.getCorreo());
-            }else{
+            } else {
                 setIdCompra(neededBean.getIdCompra());
             }
             HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -124,17 +125,45 @@ public class CompraBean {
             detalle.setSubtotal(detalleFacade.getPelicula(idPeli).getPrecioCompra());
             detalleFacade.create(detalle);
             Comprapelicula editable = detalleFacade.getCompra(idCompra);
-            editable.setTotalCompra((double)Math.round((editable.getTotalCompra()+detalle.getSubtotal())* 100d)/100d);
-            System.out.println(editable.getTotalCompra()+ "Total de compraXDXDXDXD");
+            editable.setTotalCompra((double) Math.round((editable.getTotalCompra() + detalle.getSubtotal()) * 100d) / 100d);
+            System.out.println(editable.getTotalCompra() + "Total de compraXDXDXDXD");
             compraFacade = new ComprapeliculaFacade();
             compraFacade.update(editable);
         } catch (Exception ex) {
             Logger.getLogger(CompraBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public String vaciar(String correo){
-        //Borrar
+
+    public String vaciar(String correo) throws Exception {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        UserLog neededBean = (UserLog) facesContext.getApplication().createValueBinding("#{userLog}").getValue(facesContext);
+        if (neededBean.getIdCompra() == 0 && neededBean.getIdCompra() == 0) {
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "No tienes nada en el carrito", "Advertencia"));
+        } else {
+            compraFacade = new ComprapeliculaFacade();
+            detalleFacade = new DetallecomprapeliculaFacade();
+            if (neededBean.getIdCompra() != 0) {
+                detalleFacade.remove(detalleFacade.getCompra(neededBean.getIdCompra()));
+                compraFacade.remove(neededBean.getIdCompra());
+            }
+            detalleSerieFacade = new DetallecompraserieFacade();
+            if (neededBean.getIdCompraSerie() != 0) {
+                detalleSerieFacade.remove(detalleSerieFacade.getCompra(neededBean.getIdCompraSerie()));
+                compraSerieFacade = new CompraserieFacade();
+                compraSerieFacade.remove(neededBean.getIdCompraSerie());
+            }
+            neededBean.setIdCompra(0);
+            neededBean.setIdCompraSerie(0);
+        }
         return "Home";
+    }
+
+    public void confirmar() {
+        try {
+            FacesContext contex = FacesContext.getCurrentInstance();
+            contex.getExternalContext().redirect("/Videoclub/faces/view/confirmar.xhtml");
+        } catch (Exception e) {
+            System.out.println("Me voy al carajo, no funciona esta redireccion");
+        }
     }
 }
