@@ -21,7 +21,8 @@
                                         <p:panelGrid columns="1">
                                             <h:outputText value="#{comp.titulo}" style="font-size: 14pt;" />
                                             <h:graphicImage library="img" name="peli#{comp.idPelicula}.jpg" style="width: 120px;"/>
-                                            <p:commandLink value="Ver más" styleClass="btn btn-large" style="background-color: #00C853;font-size: 12pt;color: white" action="#{peliculaBean.buscar(comp.idPelicula)}"/>
+                                            <h:outputText value="#{comp.sinopsis}" style="font-size: 12pt;" />
+                                            <p:commandLink value="Ver más" styleClass="btn" style="background-color: #00C853;font-size: 11pt;color: white" action="#{peliculaBean.buscar(comp.idPelicula)}"/>
                                         </p:panelGrid>
                                     </p:column>
                                 </p:dataTable>
