@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author aaron
+ * @author JuandeJesus
  */
 @Entity
 @Table(name = "serie")
@@ -181,5 +181,4 @@ public class Serie implements Serializable {
     public String toString() {
         return "entidad.Serie[ idSerie=" + idSerie + " ]";
     }
-    
 }

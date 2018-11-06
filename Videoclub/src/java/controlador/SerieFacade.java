@@ -10,13 +10,15 @@ import entidad.Serie;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
 /**
  *
- * @author aaron
+ * @author JuandeJesus
  */
 @Stateless
 public class SerieFacade {
@@ -65,5 +67,5 @@ public class SerieFacade {
     
     
     }
-
+    
 }

@@ -3,16 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/PeliculaBean.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/descripcion_serie.xhtml</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/Actualizar_serie.xhtml</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/SerieFacade.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/Registro.xhtml</file>
-            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearSerie.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/SeriePojo.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/entidad/Usuario.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearPelicula.xhtml</file>
-            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/SerieBean.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/SerieJpaController.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/entidad/Serie.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/UsuarioFacade.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/PeliculaBean.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/UsuarioJpaController.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/UsuarioBean.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearSerie.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/SerieBean.java</file>
         </group>
     </open-files>
 </project-private>

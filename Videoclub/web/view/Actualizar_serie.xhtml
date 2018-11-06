@@ -52,12 +52,14 @@
                     <p:graphicImage library="img" name="ser.png" style="width: 180px;"/>
                 </h:panelGrid>
 </h:form>
+                <h:form>
                  <div class="ui-inputgroup">
             <h:panelGrid columns="3" cellpadding="10">
                 <p:inputText placeholder="Buscar" value="#{serieBean.idSerie}"/>
                 <p:commandButton icon="ui-icon-search" action="#{serieBean.buscar()}" ajax="true" update=":tabla:Actualizar_tb"/>
             </h:panelGrid>
         </div>
+                </h:form>
      <h:form id="tabla">
    
          

@@ -1,23 +1,33 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controlador;
 
 import controlador.exceptions.NonexistentEntityException;
 import controlador.exceptions.PreexistingEntityException;
 import controlador.exceptions.RollbackFailureException;
-import entidad.Serie;
 import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import entidad.Categoria;
+import entidad.Serie;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityTransaction;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.transaction.UserTransaction;
 
+/**
+ *
+ * @author JuandeJesus
+ */
 public class SerieJpaController implements Serializable {
 
-    public SerieJpaController(EntityManagerFactory emf) {
+   public SerieJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityTransaction utx = null;
@@ -154,5 +164,4 @@ public class SerieJpaController implements Serializable {
             em.close();
         }
     }
-    
 }

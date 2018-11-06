@@ -102,14 +102,14 @@ public class SerieBean {
 
     public void buscar() {
         
-       SeriePojo serieP= SerieFacade.buscarSerie(idSerie);
-       if(serieP!=null){
+       SeriePojo serieP= SerieFacade.buscarSerie(1);
+       if(serieP !=null){
            setTitulo(serieP.getTitulo());
            setSinopsis(serieP.getSinopsis());
            setRating(serieP.getRating());
            setPrecio(serieP.getPrecio());
            setNumero_temporadas(serieP.getNumero_temporadas());
-           setCategoria_nombre(serieP.getCategoria_nombre());
+           setIdCategoria(serieP.getIdCategoria());
            
        
        }
