@@ -39,7 +39,14 @@ and open the template in the editor.
                                                         <div class="col s12 input-field">
                                                             <p:inputText id="password" value="#{userLog.contraseña}" required="false" requiredMessage="Contraseña es requerida"/>
                                                             <p:outputLabel for="username" value="Contraseña"/>
+                                                            
                                                         </div>
+                                                        <div class="col s12 input-field">
+                                                            <p:captcha />
+                                                            
+                                                        </div>
+                                                                                                                <div class="col s12 input-field">
+
                                                         <div class="col s6 input-field">
                                                             <p:commandLink value="Ingresar" class="btn btn-large" action="#{userLog.submit()}"/>
                                                         </div>

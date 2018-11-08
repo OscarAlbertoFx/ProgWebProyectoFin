@@ -102,7 +102,7 @@ public class SerieBean {
 
     public void buscar() {
         
-       SeriePojo serieP= SerieFacade.buscarSerie(1);
+       SeriePojo serieP= SerieFacade.buscarSerie(idSerie);
        if(serieP !=null){
            setTitulo(serieP.getTitulo());
            setSinopsis(serieP.getSinopsis());

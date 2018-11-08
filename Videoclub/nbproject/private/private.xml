@@ -11,14 +11,15 @@
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/SeriePojo.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/entidad/Usuario.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearPelicula.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/UsuarioFacade.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/SerieJpaController.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/entidad/Serie.java</file>
-            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/UsuarioFacade.java</file>
-            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/conf/persistence.xml</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/PeliculaBean.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/UsuarioJpaController.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/UsuarioBean.java</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/CrearSerie.xhtml</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/controlador/DetallecompraserieJpaController.java</file>
+            <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/web/view/Login.xhtml</file>
             <file>file:/C:/Users/JuandeJesus/Desktop/ProgWebProyectoFin/Videoclub/src/java/modelo/SerieBean.java</file>
         </group>
     </open-files>
