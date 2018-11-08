@@ -16,23 +16,29 @@
                         <h:form>
                             <p:outputLabel value="Categoria 1" style="font-size: 28px; color: black"/>
                             <div style="border: transparent">
-                                <p:commandLink id="link" action="descripcion_serie.xhtml">
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie1.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie2.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie3.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie4.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie5.jpg" height="188" width="220"/>
-                                </p:commandLink>
+                                <p:dataTable var="comp" value="#{serieBean.valores}" style="border: 0px;">
+                                    <p:column style="text-align: center">
+                                        <p:panelGrid columns="1">
+                                            <h:outputText value="#{comp.titulo}" style="font-size: 14pt;" />
+                                            <h:graphicImage library="img" name="peli#{comp.idSerie}.jpg" style="width: 120px;"/>
+                                            <h:outputText value="#{comp.sinopsis}" style="font-size: 12pt;" />
+                                            <p:commandLink value="Ver más" styleClass="btn" style="background-color: #00C853;font-size: 11pt;color: white" action="#{serieBean.buscar(comp.idSerie)}"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                </p:dataTable>
                             </div>
-                            <p:outputLabel value="Categoria 2" style="font-size: 28px; color: black"/>
+                            <p:outputLabel value="Categoria" style="font-size: 28px; color: black"/>
                             <div style="border: transparent">
-                                <p:commandLink id="link2" action="descripcion_serie.xhtml">
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie6.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie7.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie8.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie9.jpg" height="188" width="220"/>
-                                    <h:graphicImage styleClass="content" url="../resources/img/serie10.jpg" height="188" width="220"/>
-                                </p:commandLink>
+                                <p:dataTable var="comp" value="#{serieBean.valores}" style="border: 0px;">
+                                    <p:column style="text-align: center">
+                                        <p:panelGrid columns="1">
+                                            <h:outputText value="#{comp.titulo}" style="font-size: 14pt;" />
+                                            <h:graphicImage library="img" name="peli#{comp.idSerie}.jpg" style="width: 120px;"/>
+                                            <h:outputText value="#{comp.sinopsis}" style="font-size: 12pt;" />
+                                            <p:commandLink value="Ver más" styleClass="btn" style="background-color: #00C853;font-size: 11pt;color: white" action="#{serieBean.buscar(comp.idSerie)}"/>
+                                        </p:panelGrid>
+                                    </p:column>
+                                </p:dataTable>
                             </div>
                         </h:form>
                     </div>

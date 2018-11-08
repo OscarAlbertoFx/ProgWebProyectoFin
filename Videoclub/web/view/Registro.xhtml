@@ -49,7 +49,9 @@ and open the template in the editor.
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCorreo" value="Correo"/>
-                                                <p:inputText id="txtCorreo" value="#{bean.correo}" required="true" type="email" requiredMessage="Campo Requerido" />
+                                                <p:inputText id="txtCorreo" value="#{bean.correo}" required="true" type="email" requiredMessage="Campo Requerido" validatorMessage="Correo invalido">
+                                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[\p{L}\p{M}\p{N}.-]*(\.[\p{L}\p{M}]{2,})$"/>
+                                                </p:inputText>
                                                 <p:message for="txtCorreo"/>
                                             </div>
                                             <div class="input-field col s6">
@@ -93,12 +95,18 @@ and open the template in the editor.
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="celular" value="Celular"/>
-                                                <p:inputText id="celular" value="#{bean.celular}" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:inputText id="celular" value="#{bean.celular}" required="true" requiredMessage="Campo Requerido" validatorMessage="Numero invalido">
+                                                    <f:validateRegex pattern="^[0-9]"/>
+                                                    <f:validateLength minimum="10" maximum="10"/>
+                                                </p:inputText>
                                                 <p:message for="celular"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtTF" value="Telefono Fijo"/>
-                                                <p:inputText id="txtTF" value="#{bean.telefono_fijo}" required="true" requiredMessage="Campo Requerido"/>  
+                                                <p:inputText id="txtTF" value="#{bean.telefono_fijo}" required="true" requiredMessage="Campo Requerido" validatorMessage="Numero invalido">
+                                                    <f:validateRegex pattern="^[0-9]"/>
+                                                    <f:validateLength minimum="7" maximum="7"/>
+                                                </p:inputText>  
                                                 <p:message for="txtTF"/>
                                             </div>
                                         </div>

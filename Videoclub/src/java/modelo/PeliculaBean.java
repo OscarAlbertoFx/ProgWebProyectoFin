@@ -155,6 +155,7 @@ public class PeliculaBean {
     public void setCategoria_nombre(String categoria_nombre) {
         this.categoria_nombre = categoria_nombre;
     }
+    
        public List<Pelicula> getValores() {
         return valores;
     }

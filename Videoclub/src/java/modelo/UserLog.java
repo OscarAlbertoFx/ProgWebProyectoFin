@@ -17,12 +17,24 @@ public class UserLog implements Serializable {
     private int idCompra = 0;
     private int idCompraSerie = 0;
     private Exception failure;
+    private int idRenta = 0;
 
     private UsuarioFacade usuarioFacade;
 
     public UserLog() {
 
     }
+
+    public int getIdRenta()
+    {
+        return idRenta;
+    }
+
+    public void setIdRenta(int idRenta)
+    {
+        this.idRenta = idRenta;
+    }
+    
 
     public int getIdUsuario() {
         return idUsuario;

@@ -6,6 +6,7 @@
 package entidad;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -45,6 +46,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByCelular", query = "SELECT u FROM Usuario u WHERE u.celular = :celular")
     , @NamedQuery(name = "Usuario.findByTelefonoFijo", query = "SELECT u FROM Usuario u WHERE u.telefonoFijo = :telefonoFijo")})
 public class Usuario implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Collection<Rentapelicula> rentapeliculaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -271,6 +275,17 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "entidad.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Rentapelicula> getRentapeliculaCollection()
+    {
+        return rentapeliculaCollection;
+    }
+
+    public void setRentapeliculaCollection(Collection<Rentapelicula> rentapeliculaCollection)
+    {
+        this.rentapeliculaCollection = rentapeliculaCollection;
     }
     
 }

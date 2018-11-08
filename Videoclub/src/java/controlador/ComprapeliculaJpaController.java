@@ -85,9 +85,11 @@ public class ComprapeliculaJpaController implements Serializable {
             utx = em.getTransaction();
             utx.begin();
             Comprapelicula persistentComprapelicula = em.find(Comprapelicula.class, comprapelicula.getIdCompra());
+            
             List<Detallecomprapelicula> detallecomprapeliculaListOld = persistentComprapelicula.getDetallecomprapeliculaList();
             List<Detallecomprapelicula> detallecomprapeliculaListNew = comprapelicula.getDetallecomprapeliculaList();
             List<String> illegalOrphanMessages = null;
+            
             for (Detallecomprapelicula detallecomprapeliculaListOldDetallecomprapelicula : detallecomprapeliculaListOld) {
                 if (!detallecomprapeliculaListNew.contains(detallecomprapeliculaListOldDetallecomprapelicula)) {
                     if (illegalOrphanMessages == null) {
@@ -104,6 +106,7 @@ public class ComprapeliculaJpaController implements Serializable {
                 detallecomprapeliculaListNewDetallecomprapeliculaToAttach = em.getReference(detallecomprapeliculaListNewDetallecomprapeliculaToAttach.getClass(), detallecomprapeliculaListNewDetallecomprapeliculaToAttach.getIdDetalleCompra());
                 attachedDetallecomprapeliculaListNew.add(detallecomprapeliculaListNewDetallecomprapeliculaToAttach);
             }
+            //UNODOSTRESCUATRO
             detallecomprapeliculaListNew = attachedDetallecomprapeliculaListNew;
             comprapelicula.setDetallecomprapeliculaList(detallecomprapeliculaListNew);
             comprapelicula = em.merge(comprapelicula);
